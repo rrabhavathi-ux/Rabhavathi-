@@ -1,0 +1,22 @@
+import requests
+# Function to get weather details
+def get_weather(city):
+API_KEY = "362e20a11bed4d5e0a8cbb18a753d330"
+BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
+url = BASE_URL + "appid=" + API_KEY + "&q=" + city + "&units=metric"
+response = requests.get(url)
+if response.status_code == 200:
+data = response.json()
+main = data['main']
+weather = data['weather'][0]
+print(f"\nWeather Report for: {city.upper()}")
+print(f"Temperature: {main['temp']}°C")
+print(f"Feels Like: {main['feels_like']}°C")
+print(f"Humidity: {main['humidity']}%")
+print(f"Weather: {weather['description'].title()}")
+else:
+print(f"Could not find weather data for {city}:")
+# Main program
+if _name_ == "_main_":
+city = input("Enter city name (e.g., Bangalore): ")
+get_weather(city)

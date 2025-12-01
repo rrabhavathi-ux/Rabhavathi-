@@ -1,2 +1,0 @@
-# Rabhavathi-
-Weather app 
